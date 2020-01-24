@@ -1,0 +1,37 @@
+<div style="text-align:center">
+  <h1>
+   {{ title }}
+  </h1>
+  
+  <div>
+	<label> Id : {{id}} </label>
+  </div>
+  
+  <div>
+	<label> Id du pokemon
+		<input type="text" [(ngModel)]="id">
+	</label>
+	<label> Id du pokemon 2
+		<input readonly type="text" [(ngModel)]="id">
+	</label>
+  </div>
+  <div>
+	 <input type="text" [(ngModel)]="filterSearch"> 
+	  
+	<label> Choisissez votre pokemon :
+		<select [(ngModel)]="choixPokemon"> 
+			<option *ngFor="let pokemon of pokemons | filterPokemonPipe: filterSearch">
+				{{pokemon.name}}
+			</option>
+		</select>
+	</label>
+	
+	<button (click)="go()"> 
+		Go !
+	</button>
+	
+  </div>
+  
+  
+
+</div>
