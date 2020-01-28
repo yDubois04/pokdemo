@@ -1,7 +1,16 @@
 export class Pokemon {
 
-  constructor(private name: string) {
+  constructor(private name: string, private id: number, private stats: Array<{boost: number, name: string}>) {
+  }
+  getId() {
+    return this.id;
   }
 
-  id: number;
+  getName() {
+    return this.name;
+  }
+
+  getStats() {
+    return this.stats;
+  }
 }

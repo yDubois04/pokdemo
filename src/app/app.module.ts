@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
 import {PokemonService} from './pokemon.service';
 import {HttpClientModule} from '@angular/common/http';
+import { DescPokemonComponent } from './desc-pokemon/desc-pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponentComponent,
-    FilterPokemonPipePipe
+    FilterPokemonPipePipe,
+    DescPokemonComponent
   ],
   imports: [
     HttpClientModule,
