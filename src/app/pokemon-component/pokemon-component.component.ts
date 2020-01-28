@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Pokemon} from '../pokemon';
+import {PokemonService} from '../pokemon.service';
 
 @Component({
   selector: 'app-pokemon-component',
@@ -7,27 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonComponentComponent implements OnInit {
 
-  id: string = "";
-  title: string = "Pokemon c'est bien !!!!!";
-  choixPokemon: string = "";
-  filterSearch: string = "";
-  
-  pokemons: Pokemon [] = [
-		{id: 1,name: 'Pikatchu'},
-		{id: 2,name: 'Bulbizarre'},
-		{id: 3,name: 'Canarticho'},
-		{id: 4,name: 'Roucool'}
-  ];
+  id: string = '';
+  title: string = 'Pokemon c\'est bien !!!!!';
+  choixPokemon: string = '';
+  filterSearch: string = '';
 
-  constructor() {
-	
+  pokemons: Pokemon [];
+
+  constructor(private pokeService: PokemonService) {
+
   }
 
   ngOnInit() {
+    this.pokeService.getPokemons().subscribe(res => {
+      this.pokemons = res.results.map(item => new Pokemon(item.name));
+    });
+
   }
-  
-  go () {
-	console.log ("Pokemon sélectionné : id: "+this.id+" pokemon : " + this.choixPokemon);
+
+  go() {
+    console.log ( 'Pokemon sélectionné : id: ' + this.id + ' pokemon : ' + this.choixPokemon);
   }
 
 }
