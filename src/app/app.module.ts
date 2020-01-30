@@ -8,6 +8,7 @@ import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
 import {PokemonService} from './pokemon.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DescPokemonComponent } from './desc-pokemon/desc-pokemon.component';
+import {PokemonAPIService} from './pokemon-api.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { DescPokemonComponent } from './desc-pokemon/desc-pokemon.component';
     FormsModule,
     BrowserModule
   ],
-  providers: [PokemonService],
+  providers: [PokemonService, PokemonAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

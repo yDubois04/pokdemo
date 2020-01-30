@@ -29,12 +29,8 @@ export class PokemonService {
     return this.http.get<PokemonsResult>('https://pokeapi.co/api/v2/pokemon?offset=0&limit=807');
   }
 
-  getPokemonById(id: number): Observable<PokemonResult> {
+  getPokemon(id: string): Observable<PokemonResult> {
     return this.http.get<PokemonResult>('https://pokeapi.co/api/v2/pokemon/' + id);
-  }
-
-  getPokemonByName(name: string): Observable<PokemonResult> {
-    return this.http.get<PokemonResult>('https://pokeapi.co/api/v2/pokemon/' + name);
   }
 }
 

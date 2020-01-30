@@ -21,7 +21,7 @@
 	<label> Choisissez votre pokemon :
 		<select [(ngModel)]="choixPokemon">
 			<option *ngFor="let pokemon of pokemons | filterPokemonPipe: filterSearch">
-				{{pokemon.id}}
+				{{pokemon.name}}
 			</option>
 		</select>
 	</label>

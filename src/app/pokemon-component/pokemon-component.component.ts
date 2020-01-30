@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Pokemon} from '../pokemon';
 import {PokemonService} from '../pokemon.service';
+import {PokemonAPIService} from '../pokemon-api.service';
 
 @Component({
   selector: 'app-pokemon-component',
@@ -10,13 +11,13 @@ import {PokemonService} from '../pokemon.service';
 export class PokemonComponentComponent implements OnInit {
 
   id: string = '';
-  title: string = 'Pokemon c\'est bien !!!!!';
+  title: string = 'Mon pokedex';
   choixPokemon: string = '';
   filterSearch: string = '';
 
   pokemons: Pokemon [];
 
-  constructor(private pokeService: PokemonService) {
+  constructor(private pokeService: PokemonService, private apiService: PokemonAPIService) {
 
   }
 
@@ -28,6 +29,7 @@ export class PokemonComponentComponent implements OnInit {
 
   go() {
     console.log ( 'Pokemon sélectionné : id: ' + this.id + ' pokemon : ' + this.choixPokemon);
+    this.apiService.sendId(this.id);
   }
 
 }
