@@ -29,7 +29,11 @@ export class PokemonComponentComponent implements OnInit {
 
   go() {
     console.log ( 'Pokemon sélectionné : id: ' + this.id + ' pokemon : ' + this.choixPokemon);
-    this.apiService.sendId(this.id);
+    if (this.id !== '') {
+      this.apiService.sendId(this.id);
+    } else {
+      this.apiService.sendId(this.choixPokemon);
+    }
   }
 
 }

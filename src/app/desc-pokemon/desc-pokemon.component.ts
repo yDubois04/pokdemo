@@ -17,10 +17,15 @@ export class DescPokemonComponent implements OnInit {
 
 
   constructor(private pokemonService: PokemonService, private pokemonApiService: PokemonAPIService) {
-    this.subscription = this.pokemonApiService.getId().subscribe(idPokemon => {
-      this.pokemonId = idPokemon;
+    this.subscription = this.pokemonApiService.getId().subscribe({
+      next: (v) => this.getPokemonInfo(v)
     });
-    this.pokemonService.getPokemon(this.pokemonId).subscribe(res => {
+  }
+
+  ngOnInit() {
+  }
+  getPokemonInfo(id: string) {
+    this.pokemonService.getPokemon(id).subscribe(res => {
         const stats: Array <{boost: number, name: string}> = [
           {boost: res.stats[0].base_stat, name: res.stats[0].stat.name},
           {boost: res.stats[1].base_stat, name: res.stats[1].stat.name},
@@ -32,9 +37,6 @@ export class DescPokemonComponent implements OnInit {
         this.pokemon = new Pokemon(res.name, res.id, stats);
       }
     );
-  }
-
-  ngOnInit() {
   }
 
 }

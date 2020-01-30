@@ -6,16 +6,16 @@ import {Observable, of, Subject} from 'rxjs';
 })
 export class PokemonAPIService {
 
-  private subject = new Subject<any>();
+  private subject = new Subject<string>();
 
   constructor() {
   }
 
-  sendId(id: string){
-    this.subject.next({idPokemon: id});
+  sendId(id: string) {
+    this.subject.next(id);
   }
 
-  getId(): Observable<any>{
+  getId(): Observable<string> {
     return this.subject.asObservable();
   }
 }
