@@ -12,7 +12,6 @@ import {Subscription} from "rxjs";
 export class DescPokemonComponent implements OnInit {
 
   pokemon: Pokemon;
-  pokemonId: string;
   subscription: Subscription;
 
 

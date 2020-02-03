@@ -11,7 +11,6 @@ import {PokemonAPIService} from '../pokemon-api.service';
 export class PokemonComponentComponent implements OnInit {
 
   id: string = '';
-  title: string = 'Mon pokedex';
   choixPokemon: string = '';
   filterSearch: string = '';
 
@@ -31,8 +30,10 @@ export class PokemonComponentComponent implements OnInit {
     console.log ( 'Pokemon sélectionné : id: ' + this.id + ' pokemon : ' + this.choixPokemon);
     if (this.id !== '') {
       this.apiService.sendId(this.id);
-    } else {
+    } else if (this.choixPokemon !== '') {
       this.apiService.sendId(this.choixPokemon);
+    } else {
+      this.apiService.sendId(this.pokemons[0].getName());
     }
   }
 
