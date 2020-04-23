@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div >
   <div>
 	<label> Id : {{id}} </label>
   </div>
@@ -16,7 +16,7 @@
 
 	<label> Choisissez votre pokemon :
 		<select [(ngModel)]="choixPokemon">
-			<option *ngFor="let pokemon of pokemons | filterPokemonPipe: filterSearch">
+			<option [value]="pokemon.id" *ngFor="let pokemon of this.pokemons | filterPokemonPipe: 'name': filterSearch">
 				{{pokemon.name}}
 			</option>
 		</select>
@@ -25,6 +25,10 @@
 	<button (click)="go()">
 		Go !
 	</button>
+
+    <div *ngIf="pokemon">
+      <app-desc-pokemon [pokemon] = pokemon></app-desc-pokemon>
+    </div>
 
   </div>
 

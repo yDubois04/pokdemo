@@ -1,15 +1,15 @@
 <div style="text-align:center">
 
   <div>
-    <label> Id du pokemon choisi : {{pokemon?.getId()}} </label>
+    <label> Id du pokemon choisi : {{pokemon.name}} </label>
   </div>
 
 
   <div>
-    <label> Nom du pokemon choisi : {{pokemon?.getName()}} </label>
+    <label> Nom du pokemon choisi : {{pokemon.id}} </label>
   </div>
 
   <ul>
-    <li *ngFor="let stat of pokemon?.getStats()">{{ stat.name }} : {{stat.boost}}</li>
+    <li *ngFor="let stat of pokemon.stats">{{stat.base_stat}} : {{stat.stat.name}}</li>
   </ul>
 </div>

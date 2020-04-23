@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Pokemon} from '../pokemon';
+import {Pokemon, PokemonDetails} from '../pokemon';
 import {PokemonService} from '../pokemon.service';
 import {PokemonAPIService} from '../pokemon-api.service';
 
@@ -13,27 +13,29 @@ export class PokemonComponentComponent implements OnInit {
   id: string = '';
   choixPokemon: string = '';
   filterSearch: string = '';
-
-  pokemons: Pokemon [];
+  pokemon: PokemonDetails;
+  pokemons: Pokemon [] = [];
+  i = 1;
 
   constructor(private pokeService: PokemonService, private apiService: PokemonAPIService) {
 
   }
 
   ngOnInit() {
-    this.pokeService.getPokemons().subscribe(res => {
-      this.pokemons = res.results.map(item => new Pokemon(item.name, Number(item.url.split('/')[6]), null) );
+    this.pokeService.getPokemons().subscribe(data => {
+      data.results.forEach((e) => {
+        this.pokemons.push(new Pokemon(e.name, this.i ++ , e.url));
+      });
     });
   }
 
   go() {
-    console.log ( 'Pokemon sélectionné : id: ' + this.id + ' pokemon : ' + this.choixPokemon);
-    if (this.id !== '') {
-      this.apiService.sendId(this.id);
-    } else if (this.choixPokemon !== '') {
+    console.log ( 'Pokemon sélectionné : id: ' + this.choixPokemon) ;
+    if (this.choixPokemon !== '') {
       this.apiService.sendId(this.choixPokemon);
-    } else {
-      this.apiService.sendId(this.pokemons[0].getName());
+      this.pokeService.getPokemon(this.choixPokemon).subscribe(data => {
+        this.pokemon = data;
+      });
     }
   }
 

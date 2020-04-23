@@ -15,7 +15,7 @@ export class PokemonAPIService {
     this.subject.next(id);
   }
 
-  getId(): Observable<string> {
-    return this.subject.asObservable();
+  getId(): Subject<string> {
+    return this.subject;
   }
 }
