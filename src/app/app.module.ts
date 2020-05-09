@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { PokemonComponentComponent } from './pokemon-component/pokemon-component.component';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +8,7 @@ import {PokemonService} from './pokemon.service';
 import {HttpClientModule} from '@angular/common/http';
 import { DescPokemonComponent } from './desc-pokemon/desc-pokemon.component';
 import {PokemonAPIService} from './pokemon-api.service';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,11 @@ import {PokemonAPIService} from './pokemon-api.service';
   imports: [
     HttpClientModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    MatSliderModule
   ],
   providers: [PokemonService, PokemonAPIService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

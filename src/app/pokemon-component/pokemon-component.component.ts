@@ -10,9 +10,9 @@ import {PokemonAPIService} from '../pokemon-api.service';
 })
 export class PokemonComponentComponent implements OnInit {
 
-  id: string = '';
-  choixPokemon: string = '';
-  filterSearch: string = '';
+  id = '';
+  choixPokemon = '';
+  filterSearch = '';
   pokemon: PokemonDetails;
   pokemons: Pokemon [] = [];
   i = 1;
